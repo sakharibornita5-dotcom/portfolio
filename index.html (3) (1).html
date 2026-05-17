@@ -350,16 +350,51 @@ a.info-value:hover { color: var(--accent); transform: translateX(6px); }
     <div class="projects">
 
       <!-- Project 1: Curry Chronicles -->
-      <div class="project reveal">
-        <div class="project-number">01</div>
-        <div class="project-left">
-          <div class="project-title">The Curry<br>Chronicles</div>
-          <div class="project-meta">Food &amp; Recipe · 2025</div>
-        </div>
-        <div class="project-right">
-          <p>A richly designed food blog celebrating authentic Indian flavours — built with Tailwind CSS, animated recipe cards, and a warm dark aesthetic that makes every dish feel like an invitation.</p>
-          <a href="5149a078c_curry-chronicles(1).html" target="_blank" class="demo-link"> →</a>
+<div class="project reveal">
+  <div class="project-number">01</div>
 
+  <div class="project-left">
+    <div class="project-title">The Curry<br>Chronicles</div>
+    <div class="project-meta">Food &amp; Recipe · 2025</div>
+  </div>
+
+  <div class="project-right">
+    <p>
+      A richly designed food blog celebrating authentic Indian flavours —
+      built with Tailwind CSS, animated recipe cards, and a warm dark
+      aesthetic that makes every dish feel like an invitation.
+    </p>
+
+    <div class="project-preview">
+      <iframe 
+        src="curry-chronicles(1).html"
+        title="The Curry Chronicles"
+        loading="lazy">
+      </iframe>
+    </div>
+
+    <span class="demo-link" onclick="showPage()">
+      Back to new page →
+    </span>
+  </div>
+</div>
+.project-preview {
+  width: 100%;
+  margin-top: 24px;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+}
+
+.project-preview iframe {
+  width: 100%;
+  height: 700px;
+  border: none;
+  background: #000;
+}
       <!-- Project 2: Tokyo Revengers RPG -->
       <div class="project reveal" id="project-rpg">
         <div class="project-number">02</div>
