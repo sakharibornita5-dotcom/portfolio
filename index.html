@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bornita Sakhari — Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #f7f5f1;
+      --ink: #1a1815;
+      --muted: #888580;
+      --accent: #b5613a;
+      --border: #e2ddd8;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'DM Sans', sans-serif;
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--cream);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 300;
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── FLOWER CANVAS ── */
+    #flower-canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 3rem;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(247,245,241,0.92);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+    }
+
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      color: var(--ink);
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .nav-logo em { font-style: italic; font-weight: 300; }
+
+    .nav-links { display: flex; gap: 2.25rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 400;
+      letter-spacing: 0.03em;
+      color: var(--ink);
+      text-decoration: none;
+      transition: color 0.2s;
+      cursor: pointer;
+    }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-links a.active { border-bottom: 1.5px solid var(--ink); padding-bottom: 2px; }
+
+    /* ── PAGES ── */
+    .page { display: none; }
+    .page.active { display: block; animation: fadeUp 0.5s ease both; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ════════════════════════════
+       PAGE 1 — INDEX
+    ════════════════════════════ */
+    .hero {
+      padding: 5rem 3rem 4rem;
+      max-width: 1000px;
+    }
+
+    .issue-label {
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+
+    .hero-headline {
+      font-family: var(--serif);
+      font-size: clamp(3.2rem, 7vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: 3.5rem;
+    }
+    .hero-headline em { font-style: italic; color: var(--accent); }
+
+    .hero-body {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .hero-meta { display: flex; flex-direction: column; gap: 0.1rem; }
+    .hero-meta span { font-size: 0.82rem; color: var(--ink); font-weight: 400; }
+    .hero-meta .role { color: var(--muted); font-weight: 300; }
+
+    .hero-desc {
+      font-size: 0.93rem;
+      line-height: 1.75;
+      color: var(--ink);
+      font-weight: 300;
+      max-width: 520px;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 2.75rem;
+    }
+
+    .cta-link {
+      font-size: 0.82rem;
+      font-weight: 400;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1.5px solid var(--ink);
+      padding-bottom: 2px;
+      letter-spacing: 0.01em;
+      transition: color 0.2s, border-color 0.2s;
+      cursor: pointer;
+    }
+    .cta-link:hover { color: var(--accent); border-color: var(--accent); }
+
+    .cta-plain {
+      font-size: 0.82rem;
+      font-weight: 400;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: color 0.2s;
+      cursor: pointer;
+    }
+    .cta-plain:hover { color: var(--accent); }
+
+    .spacer { height: 6rem; }
+
+    .about {
+      border-top: 1px solid var(--border);
+      padding: 5rem 3rem;
+    }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 2rem;
+      max-width: 1000px;
+    }
+
+    .about-left { display: flex; flex-direction: column; gap: 1rem; }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .about-heading {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--ink);
+    }
+    .about-heading em { font-style: italic; }
+
+    .about-right { display: flex; flex-direction: column; gap: 1.35rem; }
+    .about-right p { font-size: 0.9rem; line-height: 1.8; color: var(--ink); font-weight: 300; }
+    .about-right p.closing {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    /* ════════════════════════════
+       PAGE 2 — WORK
+    ════════════════════════════ */
+    .page-header {
+      padding: 4.5rem 3rem 2rem;
+      max-width: 1000px;
+    }
+
+    .page-headline {
+      font-family: var(--serif);
+      font-size: clamp(2.6rem, 5vw, 4rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+    .page-headline em { font-style: italic; color: var(--accent); }
+
+    .page-sub {
+      font-size: 0.88rem;
+      color: var(--muted);
+      max-width: 480px;
+      line-height: 1.75;
+    }
+
+    .projects { padding: 0 3rem; max-width: 1000px; }
+
+    .project-divider { border: none; border-top: 1px solid var(--border); }
+
+    .project-row {
+      display: grid;
+      grid-template-columns: 80px 1fr 1fr;
+      gap: 2rem;
+      padding: 3.5rem 0;
+      align-items: start;
+    }
+
+    .project-num {
+      font-size: 0.72rem;
+      font-weight: 400;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      padding-top: 0.35rem;
+    }
+
+    .project-title {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+
+    .project-meta { font-size: 0.78rem; color: var(--muted); font-weight: 300; }
+    .project-right { padding-top: 0.25rem; }
+
+    .project-desc {
+      font-size: 0.88rem;
+      line-height: 1.8;
+      color: var(--ink);
+      font-weight: 300;
+      margin-bottom: 1.25rem;
+    }
+
+    .project-link {
+      font-size: 0.82rem;
+      font-weight: 400;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1.5px solid var(--ink);
+      padding-bottom: 2px;
+      letter-spacing: 0.01em;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .project-link:hover { color: var(--accent); border-color: var(--accent); }
+
+    .project-row.in-progress .project-title { color: var(--muted); }
+    .project-row.in-progress .project-desc  { color: var(--muted); }
+
+    .work-cta { padding: 3rem 3rem 5rem; }
+    .work-cta a {
+      font-size: 0.82rem;
+      font-weight: 400;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1.5px solid var(--ink);
+      padding-bottom: 2px;
+      letter-spacing: 0.01em;
+      transition: color 0.2s, border-color 0.2s;
+      cursor: pointer;
+    }
+    .work-cta a:hover { color: var(--accent); border-color: var(--accent); }
+
+    /* ════════════════════════════
+       PAGE 3 — SERVICES
+    ════════════════════════════ */
+    .services-section { padding: 0 3rem 2rem; max-width: 1000px; }
+    .services-divider { border: none; border-top: 1px solid var(--border); margin-bottom: 3rem; }
+
+    .sub-label {
+      font-size: 0.68rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.75rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-bottom: 4rem;
+    }
+
+    .service-card {
+      background: var(--cream);
+      padding: 2.25rem 2rem;
+      transition: background 0.2s;
+    }
+    .service-card:hover { background: #f0ece6; }
+
+    .service-icon { font-size: 1.4rem; margin-bottom: 1rem; display: block; }
+
+    .service-title {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: var(--ink);
+      margin-bottom: 0.6rem;
+      line-height: 1.15;
+    }
+
+    .service-desc { font-size: 0.83rem; line-height: 1.8; color: var(--muted); font-weight: 300; }
+
+    .tools-section { padding: 0 3rem 5rem; max-width: 1000px; }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .tool-card {
+      background: var(--cream);
+      padding: 1.75rem 1.5rem;
+      transition: background 0.2s;
+    }
+    .tool-card:hover { background: #f0ece6; }
+
+    .tool-icon { font-size: 1.3rem; margin-bottom: 0.65rem; display: block; }
+
+    .tool-name {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 300;
+      color: var(--ink);
+      margin-bottom: 0.3rem;
+    }
+
+    .tool-desc { font-size: 0.76rem; color: var(--muted); line-height: 1.65; font-weight: 300; }
+
+    /* ════════════════════════════
+       PAGE 4 — CONTACT
+    ════════════════════════════ */
+    .availability {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+      padding: 0.45rem 1rem;
+      border: 1px solid #b5d6b2;
+      background: #f0f7ef;
+      border-radius: 2rem;
+      font-size: 0.75rem;
+      color: #3a7a36;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+    }
+
+    .availability-dot {
+      width: 7px; height: 7px;
+      background: #4caf50;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .contact-body {
+      padding: 0 3rem 5rem;
+      max-width: 1000px;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .contact-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0 3rem 3rem;
+      max-width: 940px;
+    }
+
+    .details-heading {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 300;
+      color: var(--ink);
+      margin-bottom: 1.75rem;
+    }
+
+    .detail-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+      margin-bottom: 1.4rem;
+      padding-bottom: 1.4rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .detail-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+    .detail-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .detail-value { font-size: 0.9rem; color: var(--ink); font-weight: 300; }
+    .detail-value a { color: var(--ink); text-decoration: none; transition: color 0.2s; }
+    .detail-value a:hover { color: var(--accent); }
+
+    .form-heading {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 300;
+      color: var(--ink);
+      margin-bottom: 1.75rem;
+    }
+
+    .form-group { margin-bottom: 1.25rem; }
+
+    .form-label {
+      display: block;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+      font-weight: 400;
+    }
+
+    .form-input, .form-textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--border);
+      padding: 0.6rem 0;
+      font-family: var(--sans);
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.2s;
+      border-radius: 0;
+      -webkit-appearance: none;
+    }
+    .form-input:focus, .form-textarea:focus { border-color: var(--ink); }
+    .form-input::placeholder, .form-textarea::placeholder { color: #c5c0bb; font-weight: 300; }
+
+    .form-textarea { resize: none; height: 110px; line-height: 1.7; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+
+    .form-submit {
+      margin-top: 2rem;
+      display: inline-block;
+      padding: 0.85rem 2.5rem;
+      background: var(--ink);
+      color: #fff;
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .form-submit:hover { background: var(--accent); }
+
+    .form-success {
+      display: none;
+      padding: 1.5rem;
+      border: 1px solid #b5d6b2;
+      background: #f0f7ef;
+      font-size: 0.88rem;
+      color: #3a7a36;
+      line-height: 1.7;
+      margin-top: 1rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 3rem;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    .footer-left .footer-name {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--ink);
+    }
+    .footer-left .footer-tagline {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 0.1rem;
+    }
+
+    .footer-right { display: flex; flex-direction: column; align-items: flex-end; gap: 0.25rem; }
+    .footer-right a, .footer-right span {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 300;
+      transition: color 0.2s;
+    }
+    .footer-right a:hover { color: var(--accent); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 700px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1.25rem; }
+      .hero { padding: 3rem 1.5rem 2rem; }
+      .hero-body { grid-template-columns: 1fr; }
+      .about { padding: 3rem 1.5rem; }
+      .about-inner { grid-template-columns: 1fr; }
+      .page-header { padding: 3rem 1.5rem 1.5rem; }
+      .projects { padding: 0 1.5rem; }
+      .project-row { grid-template-columns: 40px 1fr; }
+      .project-right { grid-column: 2; }
+      .work-cta { padding: 2rem 1.5rem 3rem; }
+      .services-section, .tools-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .services-grid { grid-template-columns: 1fr; }
+      .tools-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact-divider { margin-left: 1.5rem; margin-right: 1.5rem; }
+      .contact-body { padding: 0 1.5rem 3rem; grid-template-columns: 1fr; gap: 2.5rem; }
+      .form-row { grid-template-columns: 1fr; gap: 0; }
+      footer { padding: 2rem 1.5rem; flex-direction: column; gap: 1.5rem; }
+      .footer-right { align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- FLOWER CANVAS -->
+  <canvas id="flower-canvas"></canvas>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" onclick="showPage('index')">Bornita <em>Sakhari</em></a>
+    <ul class="nav-links">
+      <li><a id="nav-index"    class="active" onclick="showPage('index')">Index</a></li>
+      <li><a id="nav-work"                    onclick="showPage('work')">Work</a></li>
+      <li><a id="nav-services"                onclick="showPage('services')">Services</a></li>
+      <li><a id="nav-contact"                 onclick="showPage('contact')">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ══════════════════════════════
+       PAGE: INDEX
+  ══════════════════════════════ -->
+  <div id="page-index" class="page active">
+
+    <section class="hero">
+      <p class="issue-label">Issue 001 &mdash; Designer at Work</p>
+      <h1 class="hero-headline">
+        Your digital <em>destiny</em>,<br>
+        our expertise.
+      </h1>
+      <div class="hero-body">
+        <div class="hero-meta">
+          <span>Bornita Sakhari</span>
+          <span class="role">Designer &middot; India</span>
+        </div>
+        <p class="hero-desc">
+          I'm a second-year design student who stumbled into web design and never looked back. What started as curiosity — a blank HTML file and a flickering idea — has grown into a genuine passion for crafting digital experiences that feel alive.
+        </p>
+      </div>
+      <div class="cta-row">
+        <a class="cta-link" onclick="showPage('work')">See selected work &rarr;</a>
+        <a class="cta-plain" onclick="showPage('contact')">Get in touch</a>
+      </div>
+    </section>
+
+    <div class="spacer"></div>
+
+    <section class="about">
+      <div class="about-inner">
+        <div class="about-left">
+          <p class="section-label">About</p>
+          <h2 class="about-heading">Still a <em>student</em>, fully.</h2>
+        </div>
+        <div class="about-right">
+          <p>I'm still learning, and I love that. Right now I'm deep in the world of HTML, CSS, and JavaScript, building the foundation that will carry everything I dream of making.</p>
+          <p>Every project is a new problem to solve, a new chance to close the gap between how something looks and how it feels to use.</p>
+          <p>I believe the best designers are the ones who never stop being students — and I'm leaning into that fully. I'm not just here to graduate. I'm here to grow into someone who builds things that matter.</p>
+          <p class="closing">The journey is just beginning, and I'm moving with intention, one project at a time.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="spacer"></div>
+
+    <footer>
+      <div class="footer-left">
+        <p class="footer-name">Bornita Sakhari</p>
+        <p class="footer-tagline">Your digital destiny, our expertise.</p>
+      </div>
+      <div class="footer-right">
+        <a href="mailto:sakharibornita5@gmail.com">sakharibornita5@gmail.com</a>
+        <a href="https://instagram.com/dint_say_to_be_yours" target="_blank">@dint_say_to_be_yours</a>
+        <span>&copy; 2026 &mdash; India</span>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ══════════════════════════════
+       PAGE: WORK
+  ══════════════════════════════ -->
+  <div id="page-work" class="page">
+
+    <header class="page-header">
+      <p class="section-label">Selected Work</p>
+      <h1 class="page-headline">Things I've <em>made</em>.</h1>
+      <p class="page-sub">A small, honest list. I'd rather show you a few real attempts than a long page of pretend.</p>
+    </header>
+
+    <div class="projects">
+      <hr class="project-divider" />
+
+      <div class="project-row">
+        <span class="project-num">01</span>
+        <div class="project-left">
+          <h2 class="project-title">HAVEN — Luxury Hotel</h2>
+          <p class="project-meta">Web · HTML / CSS / JS · 2025</p>
+        </div>
+        <div class="project-right">
+          <p class="project-desc">A minimal luxury hotel booking experience — built with a full room browser, multi-step reservation flow, booking dashboard, and guest reviews. An exercise in editorial warmth meeting functional UI.</p>
+          <a href="https://hotel-booking-eight-beige.vercel.app" target="_blank" class="project-link">View live demo →</a>
+        </div>
+      </div>
+
+      <hr class="project-divider" />
+
+      <div class="project-row">
+        <span class="project-num">02</span>
+        <div class="project-left">
+          <h2 class="project-title">Tokyo Revengers — Gang War RPG</h2>
+          <p class="project-meta">Web · HTML / CSS / JS · 2025</p>
+        </div>
+        <div class="project-right">
+          <p class="project-desc">A browser-based RPG built around the Tokyo Revengers universe — featuring character creation, turn-based battle mechanics, a leaderboard, and battle history. Built to explore dark UI, game state, and interactive design.</p>
+          <a href="https://game-ten-pi-34.vercel.app" target="_blank" class="project-link">View live demo →</a>
+        </div>
+      </div>
+
+      <hr class="project-divider" />
+
+      <div class="project-row in-progress">
+        <span class="project-num">03</span>
+        <div class="project-left">
+          <h2 class="project-title">In the studio</h2>
+          <p class="project-meta">In progress · —</p>
+        </div>
+        <div class="project-right">
+          <p class="project-desc">More projects are taking shape. Each one is a chance to close the gap between how something looks and how it feels to use.</p>
+        </div>
+      </div>
+
+      <hr class="project-divider" />
+    </div>
+
+    <div class="work-cta">
+      <a onclick="showPage('contact')">Have something to build? Let's talk →</a>
+    </div>
+
+    <footer>
+      <div class="footer-left">
+        <p class="footer-name">Bornita Sakhari</p>
+        <p class="footer-tagline">Your digital destiny, our expertise.</p>
+      </div>
+      <div class="footer-right">
+        <a href="mailto:sakharibornita5@gmail.com">sakharibornita5@gmail.com</a>
+        <a href="https://instagram.com/dint_say_to_be_yours" target="_blank">@dint_say_to_be_yours</a>
+        <span>&copy; 2026 &mdash; India</span>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ══════════════════════════════
+       PAGE: SERVICES
+  ══════════════════════════════ -->
+  <div id="page-services" class="page">
+
+    <header class="page-header">
+      <p class="section-label">What I Offer</p>
+      <h1 class="page-headline">Skills & <em>services</em>.</h1>
+      <p class="page-sub">Still learning, always building. Here's what I bring to the table — and the tools I use to get there.</p>
+    </header>
+
+    <div class="services-section">
+      <hr class="services-divider" />
+      <p class="sub-label">Core Services</p>
+      <div class="services-grid">
+
+        <div class="service-card">
+          <span class="service-icon">🎨</span>
+          <h3 class="service-title">UI Design</h3>
+          <p class="service-desc">Crafting clean, intentional interfaces that balance aesthetics with usability. From wireframes to high-fidelity layouts — I design pages that feel as good as they look.</p>
+        </div>
+
+        <div class="service-card">
+          <span class="service-icon">🏗️</span>
+          <h3 class="service-title">HTML</h3>
+          <p class="service-desc">Writing structured, semantic markup that forms the backbone of every project. Clean HTML means better accessibility, better SEO, and a solid foundation to build on.</p>
+        </div>
+
+        <div class="service-card">
+          <span class="service-icon">✨</span>
+          <h3 class="service-title">CSS</h3>
+          <p class="service-desc">Bringing designs to life with precise, responsive styling. From typography and layout grids to animations and hover states — I sweat the details that make a page feel alive.</p>
+        </div>
+
+        <div class="service-card">
+          <span class="service-icon">⚡</span>
+          <h3 class="service-title">JavaScript</h3>
+          <p class="service-desc">Adding interactivity and logic to static pages. Whether it's dynamic content, form validation, or a full browser-based game — JS is where the design starts to move.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="tools-section">
+      <p class="sub-label">Tools I Work With</p>
+      <div class="tools-grid">
+
+        <div class="tool-card">
+          <span class="tool-icon">🤖</span>
+          <h4 class="tool-name">Claude</h4>
+          <p class="tool-desc">AI-assisted design and development — using Claude to think through problems, generate ideas, and ship faster.</p>
+        </div>
+
+        <div class="tool-card">
+          <span class="tool-icon">▲</span>
+          <h4 class="tool-name">Vercel</h4>
+          <p class="tool-desc">Deploying projects instantly with zero config. Every project goes live in seconds with a shareable link.</p>
+        </div>
+
+        <div class="tool-card">
+          <span class="tool-icon">💬</span>
+          <h4 class="tool-name">ChatGPT</h4>
+          <p class="tool-desc">A go-to for research, copywriting, and debugging. Used alongside Claude to explore multiple angles on a problem.</p>
+        </div>
+
+        <div class="tool-card">
+          <span class="tool-icon">🌐</span>
+          <h4 class="tool-name">Web</h4>
+          <p class="tool-desc">Building entirely in the browser — no heavy frameworks, just clean HTML, CSS, and JS that anyone can open and use.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-left">
+        <p class="footer-name">Bornita Sakhari</p>
+        <p class="footer-tagline">Your digital destiny, our expertise.</p>
+      </div>
+      <div class="footer-right">
+        <a href="mailto:sakharibornita5@gmail.com">sakharibornita5@gmail.com</a>
+        <a href="https://instagram.com/dint_say_to_be_yours" target="_blank">@dint_say_to_be_yours</a>
+        <span>&copy; 2026 &mdash; India</span>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ══════════════════════════════
+       PAGE: CONTACT
+  ══════════════════════════════ -->
+  <div id="page-contact" class="page">
+
+    <header class="page-header">
+      <p class="section-label">Get in Touch</p>
+      <h1 class="page-headline">Let's <em>talk</em>.</h1>
+      <p class="page-sub">I'm open to internships, collaborations, and projects worth building. If you have something in mind, I'd love to hear it.</p>
+      <div class="availability">
+        <span class="availability-dot"></span>
+        Available for internships — Siliguri, India &amp; remote
+      </div>
+    </header>
+
+    <hr class="contact-divider" />
+
+    <div class="contact-body">
+
+      <div class="details-col">
+        <h2 class="details-heading">Find me here.</h2>
+
+        <div class="detail-item">
+          <span class="detail-label">Email</span>
+          <span class="detail-value"><a href="mailto:sakharibornita5@gmail.com">sakharibornita5@gmail.com</a></span>
+        </div>
+
+        <div class="detail-item">
+          <span class="detail-label">Phone</span>
+          <span class="detail-value"><a href="tel:+919332950575">+91 93329 50575</a></span>
+        </div>
+
+        <div class="detail-item">
+          <span class="detail-label">Instagram</span>
+          <span class="detail-value"><a href="https://instagram.com/dint_say_to_be_yours" target="_blank">@dint_say_to_be_yours</a></span>
+        </div>
+
+        <div class="detail-item">
+          <span class="detail-label">Location</span>
+          <span class="detail-value">Siliguri, West Bengal, India</span>
+        </div>
+
+        <div class="detail-item">
+          <span class="detail-label">Availability</span>
+          <span class="detail-value">Open to internships &amp; freelance collaborations</span>
+        </div>
+      </div>
+
+      <div class="form-col">
+        <h2 class="form-heading">Send a message.</h2>
+
+        <div id="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="name">Your Name</label>
+              <input class="form-input" type="text" id="name" placeholder="Riya Sharma" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email">Email</label>
+              <input class="form-input" type="email" id="email" placeholder="riya@example.com" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="subject">Subject</label>
+            <input class="form-input" type="text" id="subject" placeholder="Internship opportunity / Let's collab" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="message">Message</label>
+            <textarea class="form-textarea" id="message" placeholder="Tell me what you're working on or what you have in mind..."></textarea>
+          </div>
+
+          <button class="form-submit" onclick="handleSubmit()">Send Message</button>
+        </div>
+
+        <div class="form-success" id="form-success">
+          ✓ &nbsp; Message sent! I'll get back to you soon.
+        </div>
+      </div>
+
+    </div>
+
+    <footer>
+      <div class="footer-left">
+        <p class="footer-name">Bornita Sakhari</p>
+        <p class="footer-tagline">Your digital destiny, our expertise.</p>
+      </div>
+      <div class="footer-right">
+        <a href="mailto:sakharibornita5@gmail.com">sakharibornita5@gmail.com</a>
+        <a href="https://instagram.com/dint_say_to_be_yours" target="_blank">@dint_say_to_be_yours</a>
+        <span>&copy; 2026 &mdash; India</span>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    /* ══════════════════════════════
+       PAGE NAVIGATION
+    ══════════════════════════════ */
+    const pages = ['index', 'work', 'services', 'contact'];
+
+    function showPage(id) {
+      pages.forEach(p => {
+        document.getElementById('page-' + p).classList.remove('active');
+        document.getElementById('nav-' + p).classList.remove('active');
+      });
+      document.getElementById('page-' + id).classList.add('active');
+      document.getElementById('nav-' + id).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    /* ══════════════════════════════
+       CONTACT FORM
+    ══════════════════════════════ */
+    function handleSubmit() {
+      const name    = document.getElementById('name').value.trim();
+      const email   = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      if (!name || !email || !message) {
+        alert('Please fill in your name, email, and message.');
+        return;
+      }
+      document.getElementById('contact-form').style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+    }
+
+    /* ══════════════════════════════
+       FLOWER FALLING EFFECT
+    ══════════════════════════════ */
+    const canvas = document.getElementById('flower-canvas');
+    const ctx    = canvas.getContext('2d');
+
+    // Petal shapes for variety
+    const PETALS = ['🌸', '🌺', '🌼', '🪷', '🌷', '✿', '❀'];
+
+    let flowers = [];
+    let W, H;
+
+    function resize() {
+      W = canvas.width  = window.innerWidth;
+      H = canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    function createFlower() {
+      return {
+        x:       Math.random() * W,
+        y:       -30,
+        size:    10 + Math.random() * 18,
+        speedY:  0.6 + Math.random() * 1.2,
+        speedX:  (Math.random() - 0.5) * 0.8,
+        rot:     Math.random() * Math.PI * 2,
+        rotSpeed:(Math.random() - 0.5) * 0.04,
+        swing:   Math.random() * Math.PI * 2,
+        swingAmp:20 + Math.random() * 30,
+        swingSpd:0.015 + Math.random() * 0.02,
+        opacity: 0.55 + Math.random() * 0.45,
+        emoji:   PETALS[Math.floor(Math.random() * PETALS.length)],
+      };
+    }
+
+    // Spawn flowers over time
+    let lastSpawn = 0;
+    const SPAWN_INTERVAL = 420; // ms between spawns
+
+    function animate(ts) {
+      ctx.clearRect(0, 0, W, H);
+
+      // Spawn
+      if (ts - lastSpawn > SPAWN_INTERVAL) {
+        flowers.push(createFlower());
+        lastSpawn = ts;
+      }
+
+      // Update & draw
+      flowers = flowers.filter(f => f.y < H + 40);
+
+      flowers.forEach(f => {
+        f.y     += f.speedY;
+        f.swing += f.swingSpd;
+        f.x     += Math.sin(f.swing) * 0.6 + f.speedX;
+        f.rot   += f.rotSpeed;
+
+        ctx.save();
+        ctx.globalAlpha = f.opacity;
+        ctx.translate(f.x, f.y);
+        ctx.rotate(f.rot);
+        ctx.font = f.size + 'px serif';
+        ctx.textAlign    = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(f.emoji, 0, 0);
+        ctx.restore();
+      });
+
+      requestAnimationFrame(animate);
+    }
+
+    // Pre-populate a few flowers so page doesn't start empty
+    for (let i = 0; i < 8; i++) {
+      const f = createFlower();
+      f.y = Math.random() * H;
+      flowers.push(f);
+    }
+
+    requestAnimationFrame(animate);
+  </script>
+
+</body>
+</html>
